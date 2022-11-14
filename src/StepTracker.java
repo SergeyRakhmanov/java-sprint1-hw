@@ -17,13 +17,11 @@ public class StepTracker {
 
         UserInput command = new UserInput();
 
-        int goal = 0;
-        do {
+        int goal = command.input(); //считываю что ввел пользователь
+        while (goal < 0) {          // запускаю цикл если введенное значение отрицательное
+            System.out.println("Количество шагов не может быть отрицательным");
             goal = command.input();
-            if (goal < 0) {
-                System.out.println("Количество шагов не может быть отрицательным");
-            }
-        } while (goal < 0);
+        }
         stepGoal = goal;
     }
 
@@ -31,14 +29,14 @@ public class StepTracker {
         UserInput command = new UserInput();
         int qty;
         int day;
-        do {
-            System.out.println("Введите день за который необходимо показать количество шагов");
-            System.out.println("(от 1 до 30)");
-            day = command.input() - 1; //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
-            if ((day < 0) || ( day > 30)) {
-                System.out.println("Введенное значение вне диапазона 1-30");
-            }
-        } while (day < 0);
+
+        System.out.println("Введите день за который необходимо показать количество шагов");
+        System.out.println("(от 1 до 30)");
+        day = command.input() - 1; //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
+        while ((day < 0) || ( day > 30)) { //запускаем в цикле запрос значения если оно вне диапазона дней в месяце
+            System.out.println("Введенное значение вне диапазона 1-30. Повторите ввод");
+            day = command.input() - 1;
+        }
         return qty = monthData.dayQTY(day);
     }
 
@@ -49,23 +47,21 @@ public class StepTracker {
         int i;
         int j;
 
-        do {
-            System.out.println("Введите номер месяца в котором добавляется количество пройденных шагов");
-            System.out.println("от 1 до 12, где январь - 1, а декабрь 12)");
-            j = month.input() - 1; //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
-            if ((j < 0) || ( j > 12)) {
-                System.out.println("Введенное значение вне диапазона 1-12");
-            }
-        } while (j < 0);
+        System.out.println("Введите номер месяца в котором добавляется количество пройденных шагов");
+        System.out.println("от 1 до 12, где январь - 1, а декабрь 12)");
+        j = month.input() - 1;               //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
+        while ((j < 0) || (j > 11)) {        //если значние не попадает в диапазон номеров месяцев, просим ввести заново
+            System.out.println("Введенное значение вне диапазона 1-12. Повторите ввод");
+            j = month.input() - 1;
+        }
 
-        do {
-            System.out.println("Введите день за который необходимо ввести данные");
-            System.out.println("(от 1 до 30)");
-            i = day.input() - 1; //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
-            if ((i < 0) || (i > 30)) {
-                System.out.println("Введенное значение вне диапазона 1-30");
-            }
-        } while (i < 0);
+        System.out.println("Введите день за который необходимо ввести данные");
+        System.out.println("(от 1 до 30)");
+        i = day.input() - 1;               //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
+        while ((i < 0) || (i > 29)) {      //если значние не попадает в диапазон запрашиваем ввести заново
+            System.out.println("Введенное значение вне диапазона 1-30. Повторите ввод");
+            i = day.input() - 1;
+        }
         monthToData[j].saveQTY(i);
     }
 
@@ -75,15 +71,14 @@ public class StepTracker {
         double totalDistance = 0; //переменная для подсчета полной дистанции
         double totalCalories = 0; //переменная для подсчета оющего числа калорий
 
-        do {
-            System.out.println("Введите номер месяца за который необходимо вывести статистику");
-            System.out.println("от 1 до 12, где январь - 1, а декабрь 12)");
-            UserInput command = new UserInput();
-            monthNumber = command.input() - 1; //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
-            if ((monthNumber < 0) || (monthNumber > 11)) {
-                System.out.println("Введенное значение вне диапазона 1-12");
-            }
-        } while ((monthNumber < 0) || (monthNumber > 11));
+        System.out.println("Введите номер месяца за который необходимо вывести статистику");
+        System.out.println("от 1 до 12, где январь - 1, а декабрь 12)");
+        UserInput command = new UserInput();
+        monthNumber = command.input() - 1; //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
+        while ((monthNumber < 0) || (monthNumber > 11)) {  //если значние не попадает в диапазон номеров месяцев, просим ввести заново
+            System.out.println("Введенное значение вне диапазона 1-12. Повторите ввод");
+            monthNumber = command.input() - 1;
+        }
 
         Converter convert = new Converter(); //объект для вызова методов конвертации
 
