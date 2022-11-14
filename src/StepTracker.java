@@ -23,7 +23,7 @@ public class StepTracker {
             if (goal < 0) {
                 System.out.println("Количество шагов не может быть отрицательным");
             }
-        } while (goal<0);
+        } while (goal < 0);
         stepGoal = goal;
     }
 
@@ -50,7 +50,7 @@ public class StepTracker {
         int j;
 
         do {
-            System.out.println("Введите номер месяца за который необходимо вывести статику");
+            System.out.println("Введите номер месяца в котором добавляется количество пройденных шагов");
             System.out.println("от 1 до 12, где январь - 1, а декабрь 12)");
             j = month.input() - 1; //уменьшаю введенное значение на 1, чтобы удобнее работать с массивами
             if ((j < 0) || ( j > 12)) {

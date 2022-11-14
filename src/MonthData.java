@@ -15,14 +15,14 @@ public class MonthData {
 
     public void saveQTY(int i){ //метод для сохранения нового значения шагов в определенном дне
         UserInput command = new UserInput();
-        System.out.println("Введите количеситво сделанных шагов");
+        System.out.println("Введите количество сделанных шагов");
         int qty = 0;
         do { //в данном цикле проверяем что вводимое знаение не отрицательно
             qty = command.input();
             if (qty < 0) {
                 System.out.println("Количество шагов не может быть отрицательным");
             }
-        } while (qty<0);
+        } while (qty < 0);
         monthQTY[i] = qty;
     }
 

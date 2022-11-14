@@ -9,11 +9,11 @@ public class UserInput {
     Scanner scan = new Scanner(System.in);
 
     public int input() {
-        if (!scan.hasNextInt()) { //если введент не int
-            do {
+        if (!scan.hasNextInt()) { //если введен не int
+            do { //делаем цикл пока пользователь вводит не int
                 System.out.println("Необходимо вводить числовое значение");
                 scan.next();  //запускаем в цикле считывание команды, переменную не присваиваем, без этого не работает
-            } while (!scan.hasNextInt()); //делаем цикл пока пользователь вводит не int
+            } while (!scan.hasNextInt());
             userCommand = scan.nextInt(); // как только введен int присваиваем переменной это значение
         } else  userCommand = scan.nextInt(); //если сразу int то присваиваем это значение переменной
         return userCommand; //возвращаем из метода int который ввел пользователь

@@ -33,7 +33,7 @@ public class Main {
         }
 
         //После завершения цикла печатем выход из программы
-        System.out.println("Завершение раоты программы");
+        System.out.println("Завершение работы программы");
     }
 
     public static void printMenu(){
